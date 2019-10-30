@@ -72,13 +72,11 @@ for k = 1:size(gama,2)
    end
    
 plot(theta,likelihood);
+hold on
+end
 ylabel('likelihood');
 xlabel('\theta');
-hold on;
 legend('\gamma[1]','\gamma[1,1]','\gamma[1,1,0,1]');
-end
-
-
 
 % Task B _5
 a = 1;
@@ -90,15 +88,15 @@ for k = 1:size(gama,2)
     for i=1:length(theta_s)
     z = sum(gama{k});
     N = length(gama{k}); % number of samples
-    log_posterior(i) = (z+a-1).*log(theta_s(i)) + (N-z+b-1).*log(1-theta_s(i)) - log(beta(z+a,N-z+b));
+    log_posterior(i) = exp((z+a-1).*log(theta_s(i)) + (N-z+b-1).*log(1-theta_s(i)) - log(beta(z+a,N-z+b)));
     end
     plot(theta_s,log_posterior);
-    plot(theta_s,log_posterior);
-    ylabel('log_posterior');
-    xlabel('\theta_s');
-    hold on;
-    legend('\gamma[1]','\gamma[1,1]','\gamma[1,1,0,1]');
+    hold on  
 end
+ylabel('log_posterior');
+xlabel('\theta_s');
+legend('\gamma[1]','\gamma[1,1]','\gamma[1,1,0,1]');
+
 
 a=[250 18.25 1];
 b=[250 6.75 1];
@@ -111,15 +109,15 @@ figure()
 for j =1:length(a)
     
     for i = 1:length(theta_s)
-    log_posterior(i) = (z+a(j)-1).*log(theta_s(i)) + (N-z+b(j)-1).*log(1-theta_s(i)) - log(beta(z+a(j),N-z+b(j)));
+    log_posterior(i) = exp((z+a(j)-1).*log(theta_s(i)) + (N-z+b(j)-1).*log(1-theta_s(i)) - log(beta(z+a(j),N-z+b(j))));
     end
     plot(theta_s,log_posterior);
-    ylabel('log_posterior');
-    xlabel('\theta_s');
-    hold on;
-    legend('N=20, z=17, a=b=250','N=20, z=17, a=18.25, b=6.75',' N=20,z=17, a=b=1');
-    
-end 
+    hold on;   
+end  
+ylabel('log_posterior');
+xlabel('\theta_s');
+legend('N=20, z=17, a=b=250','N=20, z=17, a=18.25, b=6.75',' N=20,z=17, a=b=1');
+   
  
 
 
