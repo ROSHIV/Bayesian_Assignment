@@ -18,8 +18,6 @@ for i= 1:length(theta)
    title(strrep(['\theta=' num2str(theta(i)) ],' ','_'));
 end 
 
-
-
 % Task B _3
 theta = 0:0.1:1; 
 gama = [0,1];
@@ -69,8 +67,7 @@ for k = 1:size(gama,2)
        z = sum(gama{k}); 
        N = length(gama{k}); % number of samples
        likelihood(i) = theta(i).^z.*(1-theta(i)).^(N-z);
-   end
-   
+   end  
 plot(theta,likelihood);
 hold on
 end
@@ -105,9 +102,9 @@ N=length(gama);
 z=sum(gama);
 theta_s=0:0.1:1;
 log_posterior = zeros(length(theta_s));
+
 figure()
 for j =1:length(a)
-    
     for i = 1:length(theta_s)
     log_posterior(i) = exp((z+a(j)-1).*log(theta_s(i)) + (N-z+b(j)-1).*log(1-theta_s(i)) - log(beta(z+a(j),N-z+b(j))));
     end
