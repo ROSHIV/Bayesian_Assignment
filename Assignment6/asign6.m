@@ -177,8 +177,8 @@ hold on
 xline((Mean_y_kids),'r', 'LineWidth', 2, 'LabelOrientation', 'horizontal');
 xline(Median_y_kids,'-- b', 'LineWidth', 2,'LabelOrientation', 'horizontal','LabelHorizontalAlignment', 'left' );
 %legend('\adult', 'Mean', 'Median');
-HDI_1 = prctile(theta_n,97.5);
-HDI_2 = prctile(theta_n,2.5);
+HDI_1 = prctile(y_kids,97.5);
+HDI_2 = prctile(y_kids,2.5);
 %xline(HDI_1,'');xline(HDI_2,'');
 legend('\theta-adult');
 hold on
